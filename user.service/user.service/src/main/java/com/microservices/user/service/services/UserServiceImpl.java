@@ -53,9 +53,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(String userId) {
 
+        //get user from database with the help  of user repository
         User user = userRepository.findById(userId).orElseThrow( () -> new ResourceNotFoundException("User with given Id is not found on the server: "+userId));
 
-        //fetch rating from Rating Service
+        //fetch rating of the above user from Rating Service
         //fetch from url: http://localhost:8092/Ratings/users/userId
         //Writing ArrayList as ratings are in arrayList format
         Rating[] ratingsOfUser =  restTemplate.getForObject("http://RATING-SERVICE/ratings/users/"+user.getUserId(), Rating[].class);

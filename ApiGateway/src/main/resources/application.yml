@@ -5,6 +5,7 @@ spring:
   application:
     name: API-GATEWAY
 
+#<-API Gateway Configurations->
   cloud:
     gateway:
       routes:
